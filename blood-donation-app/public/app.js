@@ -1,9 +1,13 @@
 // Navigation logic
+
 const sections = {
   home: document.getElementById('home'),
   'find-donors': document.getElementById('find-donors'),
   register: document.getElementById('register')
 };
+
+// Health & Wellness section (outside main sections)
+const wellnessSection = document.querySelector('section.w-full.flex.justify-center.items-center');
 
 function showSection(sectionId) {
   Object.keys(sections).forEach(id => {
@@ -13,6 +17,14 @@ function showSection(sectionId) {
       sections[id].classList.add('hidden');
     }
   });
+  // Show wellness cards only on Home
+  if (wellnessSection) {
+    if (sectionId === 'home') {
+      wellnessSection.classList.remove('hidden');
+    } else {
+      wellnessSection.classList.add('hidden');
+    }
+  }
 }
 
 // Handle nav and CTA clicks
